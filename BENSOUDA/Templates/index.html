@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Segmentation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<h1>Customer Segmentation project</h1>
+
+<form method="post" action="{{ url_for('predict') }}">
+    <label for="annual_income">Annual Income:</label>
+    <input type="text" id="annual_income" name="annual_income" required>
+
+    <label for="spending_score">Spending Score:</label>
+    <input type="text" id="spending_score" name="spending_score" required>
+
+    <button type="submit">Predict</button>
+</form>
+
+{% if prediction_text %}
+    <p>{{ prediction_text }}</p>
+{% endif %}
+
+{% if error_message %}
+    <p style="color: red;">{{ error_message }}</p>
+{% endif %}
+
+</body>
+</html>

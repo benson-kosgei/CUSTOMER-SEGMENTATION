@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles for the login interface */
+        body {
+            background-color: #f0f0f0; /* Light gray background */
+            font-family: Arial, sans-serif; /* Using Arial font */
+        }
+
+        .login-register-container {
+            background-color: #ffffff; /* White background */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            max-width: 400px; /* Limiting container width */
+            margin: auto; /* Center horizontally */
+            text-align: center;
+        }
+
+        h2 {
+            color: #333333; /* Dark gray */
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: 1px solid #dddddd; /* Light gray border */
+            border-radius: 25px; /* Rounded corners */
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            background-color: #f9f9f9; /* Lighter gray background */
+        }
+
+        button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        p {
+            margin-top: 15px;
+            color: #666666; /* Gray */
+        }
+
+        a {
+            color: #4CAF50; /* Green */
+            text-decoration: none;
+            transition: color 0.3s ease; /* Smooth transition */
+        }
+
+        a:hover {
+            color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-register-container">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form action="/login" method="post">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" onclick="showRegister()">Register</a></p>
+        </div>
+
+        <div class="register-container" style="display: none;">
+            <h2>Register</h2>
+            <form action="/register" method="post">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="confirm-password" placeholder="Confirm Password" required>
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+        </div>
+    </div>
+
+    <script>
+        function showLogin() {
+            document.querySelector('.login-container').style.display = 'block';
+            document.querySelector('.register-container').style.display = 'none';
+        }
+
+        function showRegister() {
+            document.querySelector('.login-container').style.display = 'none';
+            document.querySelector('.register-container').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

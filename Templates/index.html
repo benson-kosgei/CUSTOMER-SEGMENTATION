@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+    <title>Customer Segmentation</title>
+    <style>
+body {
+    background-color: #11ece1;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    color: #3010e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+}
+
+form {
+    width: 300px;
+    margin: auto; /* Center horizontally */
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #f10f0f;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Adjust if needed for vertical centering */
+    margin-top: 20px; /* Space from the form */
+}
+
+.result-message, .error-message {
+    text-align: center;
+    font-size: 18px;
+    width: 100%; /* Adjust based on your preference */
+}
+
+.result-message, .error-message {
+    font-weight: bold; /* Make the text bold */
+}
+
+.error-message {
+    color: red;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+<h1>CUSTOMER SEGMENTATION PROJECT</h1>
+
+<form method="post" action="{{ url_for('predict') }}">
+    <label for="annual_income">ANNUAL INCOME:</label>
+    <input type="text" id="annual_income" name="annual_income" required>
+
+    <label for="spending_score">SPENDING SCORE:</label>
+    <input type="text" id="spending_score" name="spending_score" required>
+
+    <button type="submit">Predict</button>
+</form>
+
+<div class="result-container">
+    {% if prediction_text %}
+        <p class="result-message">{{ prediction_text }}</p>
+    {% endif %}
+
+    {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+        <!-- Provide a Try Again button or link -->
+        <button onclick="window.location.href='/'">Try Again</button>
+        <!-- Or, for a more seamless experience, you could simply encourage them to adjust their inputs above and resubmit. -->
+        <p><a href="#" onclick="scrollToForm()">Adjust inputs and try again</a></p>
+    {% endif %}
+</div>
+
+<script>
+    function scrollToForm() {
+        // Assuming the form has an ID or a unique class you can target
+        document.querySelector('form').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+
+</body>
+</html>

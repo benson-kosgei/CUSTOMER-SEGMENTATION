@@ -109,26 +109,19 @@ button:hover {
 </form>
 
 <div class="result-container">
-    {% if prediction_text %}
-        <p class="result-message">{{ prediction_text }}</p>
-    {% endif %}
-
     {% if error_message %}
-        <p class="error-message">{{ error_message }}</p>
-        <!-- Provide a Try Again button or link -->
-        <button onclick="window.location.href='/'">Try Again</button>
-        <!-- Or, for a more seamless experience, you could simply encourage them to adjust their inputs above and resubmit. -->
-        <p><a href="#" onclick="scrollToForm()">Adjust inputs and try again</a></p>
-    {% endif %}
+    <p class="error-message">{{ error_message }}</p>
+{% endif %}
+
+{% if prediction_text %}
+    <p class="result-message">{{ prediction_text }}</p>
+{% endif %}
+
+{% if plot_data %}
+    <img src="data:image/png;base64,{{ plot_data }}" alt="Clustering Plot">
+{% endif %}
+
 </div>
-
-<script>
-    function scrollToForm() {
-        // Assuming the form has an ID or a unique class you can target
-        document.querySelector('form').scrollIntoView({ behavior: 'smooth' });
-    }
-</script>
-
 
 </body>
 </html>
